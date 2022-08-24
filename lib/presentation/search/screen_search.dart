@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/colors/colors.dart';
 import 'package:netflixapp/core/costents.dart';
-import 'package:netflixapp/presentation/search/widgets/search_idle.dart';
 import 'package:netflixapp/presentation/search/widgets/search_result_widget.dart';
 
 class ScreenSearch extends StatelessWidget {

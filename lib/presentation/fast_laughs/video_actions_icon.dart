@@ -26,7 +26,7 @@ class VideoActionIcons extends StatelessWidget {
           ),
           Text(
             sub,
-            style: TextStyle(
+            style: const TextStyle(
               color: whiteColorText,
               fontSize: 16,
             ),

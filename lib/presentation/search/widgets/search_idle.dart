@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/costents.dart';
-import 'package:netflixapp/presentation/search/widgets/search_title.dart';
+import 'package:netflixapp/presentation/widget/title.dart';
 import 'package:netflixapp/presentation/search/widgets/top_searchloisttile.dart';
 
 const imageUrl =
@@ -14,7 +14,7 @@ class ScreachIdleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchTitle(
+        const TitleWidget(
           title: 'Top Searches',
         ),
         kHeight,

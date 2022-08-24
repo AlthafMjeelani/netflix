@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflixapp/core/costents.dart';
-import 'package:netflixapp/presentation/search/widgets/search_title.dart';
+import 'package:netflixapp/presentation/widget/title.dart';
 import 'package:netflixapp/presentation/widget/main_card.dart';
 
 const resultimageUrl =
@@ -14,7 +14,7 @@ class SearchResultWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchTitle(
+        const TitleWidget(
           title: 'Movies & TV',
         ),
         kHeight,
@@ -27,7 +27,9 @@ class SearchResultWidget extends StatelessWidget {
             childAspectRatio: 1 / 2,
             children: List.generate(
               20,
-              (index) => const MainCardWidget(),
+              (index) => const MainCardWidget(
+                listImageUrl: resultimageUrl,
+              ),
             ),
           ),
         )
