@@ -6,3 +6,6 @@ const kwidth = SizedBox(
 const kHeight = SizedBox(
   height: 10,
 );
+const kHeight25 = SizedBox(
+  height: 25,
+);
