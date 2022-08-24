@@ -3,15 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflixapp/core/costents.dart';
 
 class AppbarWidget extends StatelessWidget {
-  const AppbarWidget({Key? key}) : super(key: key);
-
+  const AppbarWidget({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         kwidth,
         Text(
-          'Downloads',
+          title,
           style: GoogleFonts.montserrat(
             fontSize: 30,
             fontWeight: FontWeight.w900,

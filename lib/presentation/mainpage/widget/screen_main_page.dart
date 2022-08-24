@@ -6,6 +6,7 @@ import 'package:netflixapp/presentation/home/screen_home.dart';
 import 'package:netflixapp/presentation/mainpage/widget/screen_bottomnavigation.dart';
 import 'package:netflixapp/presentation/new_and_hot/screen_new_and_hot.dart';
 import 'package:netflixapp/presentation/search/screen_search.dart';
+import 'package:netflixapp/presentation/search/widgets/search_idle.dart';
 
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
@@ -14,8 +15,8 @@ class ScreenMainPage extends StatelessWidget {
     const ScreenHomePage(),
     const ScreenNewAndHot(),
     const ScreenFastLaughs(),
-    const ScreenSearch(),
-    const ScreenDownloads()
+    const ScreachIdleWidget(),
+    ScreenDownloads()
   ];
 
   @override

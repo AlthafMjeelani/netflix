@@ -1,19 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/colors/colors.dart';
+import 'package:netflixapp/presentation/downloads/widgets/section-one.dart';
+import 'package:netflixapp/presentation/downloads/widgets/section_three.dart';
+import 'package:netflixapp/presentation/downloads/widgets/section_two.dart';
 import 'package:netflixapp/presentation/widget/appbar_widget.dart';
 
 class ScreenDownloads extends StatelessWidget {
-  const ScreenDownloads({Key? key}) : super(key: key);
+  ScreenDownloads({Key? key}) : super(key: key);
 
+  final _widget = [
+    const SectionOne(),
+    Sectiontwo(),
+    const ScectionThree(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: backgroundcolor,
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50), child: AppbarWidget()),
-      body: SafeArea(
-        child: Center(
-          child: Text('Screen Downloads'),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: backgroundcolor,
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: AppbarWidget(
+            title: 'Downloads',
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: ListView.separated(
+            itemBuilder: (BuildContext context, int index) {
+              return _widget[index];
+            },
+            itemCount: _widget.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                height: 20,
+              );
+            },
+          ),
         ),
       ),
     );
