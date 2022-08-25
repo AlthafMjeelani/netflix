@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflixapp/presentation/home/screen_home.dart';
+import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/home/widgets/custom_button.dart';
 
 import '../../../core/colors/colors.dart';
@@ -21,7 +21,6 @@ class BackgroundcardWidget extends StatelessWidget {
               image: NetworkImage(homepageImage[5]),
               fit: BoxFit.fill,
             ),
-            color: Colors.blue,
           ),
           child: Align(
             alignment: Alignment.bottomCenter,
@@ -34,10 +33,14 @@ class BackgroundcardWidget extends StatelessWidget {
                   CostomButton(
                     icon: Icons.add,
                     text: 'My List',
+                    fontSize: 16,
+                    iconSize: 30,
                   ),
                   PlayButtonWidget(),
                   CostomButton(
                     icon: Icons.info_outline,
+                    fontSize: 16,
+                    iconSize: 30,
                     text: 'info',
                   ),
                 ],

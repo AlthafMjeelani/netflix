@@ -8,15 +8,6 @@ import 'package:netflixapp/presentation/home/widgets/number_widget.dart';
 import 'package:netflixapp/presentation/widget/appbar_widget.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
-const homepageImage = [
-  'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ekZobS8isE6mA53RAiGDG93hBxL.jpg',
-  'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/KoYWXbnYuS3b0GyQPkbuexlVK9.jpg',
-  'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/hJfI6AGrmr4uSHRccfJuSsapvOb.jpg',
-  'https://www.themoviedb.org/t/p/w220_and_h330_face/rJHC1RUORuUhtfNb4Npclx0xnOf.jpg',
-  'https://www.themoviedb.org/t/p/w220_and_h330_face/xf9wuDcqlUPWABZNeDKPbZUjWx0.jpg',
-  'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qHwlezCZzOhq88mnpeqK4asz4n.jpg',
-  'https://cdn-images-1.medium.com/max/1200/1*ty4NvNrGg4ReETxqU2N3Og.png',
-];
 
 class ScreenHomePage extends StatelessWidget {
   const ScreenHomePage({Key? key}) : super(key: key);

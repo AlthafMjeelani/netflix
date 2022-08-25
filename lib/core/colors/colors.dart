@@ -5,3 +5,4 @@ const whiteColorText = Colors.white;
 const buttonColorBlue = Colors.blue;
 const buttonColorwhite = Colors.white;
 const blackColorText = Colors.black;
+const greyColor = Colors.grey;

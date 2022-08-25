@@ -26,12 +26,16 @@ class Sectiontwo extends StatelessWidget {
             ),
           ),
         ),
-        kHeight,
+        kHeight25,
         const Text(
           '''we'll download a personised selection of movies and shows for you,so there's always something to watch on your device''',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Colors.grey),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.grey,
+          ),
         ),
+        kHeight25,
         SizedBox(
           width: size.width,
           height: size.width * 0.81,

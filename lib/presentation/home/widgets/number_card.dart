@@ -23,7 +23,7 @@ class NumberCardWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            kWidth40,
+            kWidth50,
             Container(
               height: height,
               width: width,

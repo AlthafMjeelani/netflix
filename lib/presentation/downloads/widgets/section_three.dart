@@ -22,6 +22,7 @@ class ScectionThree extends StatelessWidget {
                 'Setup',
                 style: TextStyle(
                   color: whiteColorText,
+                  fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
@@ -42,7 +43,8 @@ class ScectionThree extends StatelessWidget {
                 'See what you can download',
                 style: TextStyle(
                   color: blackColorText,
-                  fontSize: 20,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

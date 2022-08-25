@@ -21,7 +21,7 @@ class ScreenDownloads extends StatelessWidget {
       child: Scaffold(
         backgroundColor: backgroundcolor,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(50),
           child: AppbarWidget(
             title: Text(
               'Downloads',
@@ -38,7 +38,7 @@ class ScreenDownloads extends StatelessWidget {
             itemCount: _widget.length,
             separatorBuilder: (BuildContext context, int index) {
               return const SizedBox(
-                height: 20,
+                height: 30,
               );
             },
           ),

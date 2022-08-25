@@ -6,10 +6,14 @@ class CostomButton extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.text,
+    required this.iconSize,
+    required this.fontSize,
   }) : super(key: key);
 
   final IconData icon;
   final String text;
+  final double iconSize;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +25,12 @@ class CostomButton extends StatelessWidget {
           icon: Icon(
             icon,
             color: whiteColorText,
-            size: 30,
+            size: iconSize,
           ),
         ),
         Text(
           text,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w800),
         )
       ],
     );
