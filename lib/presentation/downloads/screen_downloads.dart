@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netflixapp/core/colors/colors.dart';
+import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/downloads/widgets/section_one.dart';
 import 'package:netflixapp/presentation/downloads/widgets/section_three.dart';
 import 'package:netflixapp/presentation/downloads/widgets/section_two.dart';
@@ -18,10 +20,13 @@ class ScreenDownloads extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundcolor,
-        appBar: const PreferredSize(
+        appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: AppbarWidget(
-            title: 'Downloads',
+            title: Text(
+              'Downloads',
+              style: appbarTextStyle,
+            ),
           ),
         ),
         body: Padding(

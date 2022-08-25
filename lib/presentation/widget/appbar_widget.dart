@@ -7,19 +7,13 @@ class AppbarWidget extends StatelessWidget {
     Key? key,
     required this.title,
   }) : super(key: key);
-  final String title;
+  final Widget title;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         kwidth,
-        Text(
-          title,
-          style: GoogleFonts.montserrat(
-            fontSize: 30,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
+        title,
         const Spacer(),
         IconButton(
           onPressed: () {},
