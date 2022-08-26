@@ -167,37 +167,37 @@ abstract class _GetDownloadsImage implements DownloadsEvent {
 }
 
 /// @nodoc
-mixin _$DownloadState {
+mixin _$DownloadsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<Downloads>? get downloads => throw _privateConstructorUsedError;
+  List<Downloads> get downloads => throw _privateConstructorUsedError;
   Option<Either<DownloadsFailures, List<Downloads>>>
       get downloadFailureOrSuccessOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DownloadStateCopyWith<DownloadState> get copyWith =>
+  $DownloadsStateCopyWith<DownloadsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DownloadStateCopyWith<$Res> {
-  factory $DownloadStateCopyWith(
-          DownloadState value, $Res Function(DownloadState) then) =
-      _$DownloadStateCopyWithImpl<$Res>;
+abstract class $DownloadsStateCopyWith<$Res> {
+  factory $DownloadsStateCopyWith(
+          DownloadsState value, $Res Function(DownloadsState) then) =
+      _$DownloadsStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
-      List<Downloads>? downloads,
+      List<Downloads> downloads,
       Option<Either<DownloadsFailures, List<Downloads>>>
           downloadFailureOrSuccessOption});
 }
 
 /// @nodoc
-class _$DownloadStateCopyWithImpl<$Res>
-    implements $DownloadStateCopyWith<$Res> {
-  _$DownloadStateCopyWithImpl(this._value, this._then);
+class _$DownloadsStateCopyWithImpl<$Res>
+    implements $DownloadsStateCopyWith<$Res> {
+  _$DownloadsStateCopyWithImpl(this._value, this._then);
 
-  final DownloadState _value;
+  final DownloadsState _value;
   // ignore: unused_field
-  final $Res Function(DownloadState) _then;
+  final $Res Function(DownloadsState) _then;
 
   @override
   $Res call({
@@ -213,7 +213,7 @@ class _$DownloadStateCopyWithImpl<$Res>
       downloads: downloads == freezed
           ? _value.downloads
           : downloads // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>?,
+              as List<Downloads>,
       downloadFailureOrSuccessOption: downloadFailureOrSuccessOption == freezed
           ? _value.downloadFailureOrSuccessOption
           : downloadFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -223,29 +223,29 @@ class _$DownloadStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_DownloadStateCopyWith<$Res>
-    implements $DownloadStateCopyWith<$Res> {
-  factory _$$_DownloadStateCopyWith(
-          _$_DownloadState value, $Res Function(_$_DownloadState) then) =
-      __$$_DownloadStateCopyWithImpl<$Res>;
+abstract class _$$_DownloadsStateCopyWith<$Res>
+    implements $DownloadsStateCopyWith<$Res> {
+  factory _$$_DownloadsStateCopyWith(
+          _$_DownloadsState value, $Res Function(_$_DownloadsState) then) =
+      __$$_DownloadsStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading,
-      List<Downloads>? downloads,
+      List<Downloads> downloads,
       Option<Either<DownloadsFailures, List<Downloads>>>
           downloadFailureOrSuccessOption});
 }
 
 /// @nodoc
-class __$$_DownloadStateCopyWithImpl<$Res>
-    extends _$DownloadStateCopyWithImpl<$Res>
-    implements _$$_DownloadStateCopyWith<$Res> {
-  __$$_DownloadStateCopyWithImpl(
-      _$_DownloadState _value, $Res Function(_$_DownloadState) _then)
-      : super(_value, (v) => _then(v as _$_DownloadState));
+class __$$_DownloadsStateCopyWithImpl<$Res>
+    extends _$DownloadsStateCopyWithImpl<$Res>
+    implements _$$_DownloadsStateCopyWith<$Res> {
+  __$$_DownloadsStateCopyWithImpl(
+      _$_DownloadsState _value, $Res Function(_$_DownloadsState) _then)
+      : super(_value, (v) => _then(v as _$_DownloadsState));
 
   @override
-  _$_DownloadState get _value => super._value as _$_DownloadState;
+  _$_DownloadsState get _value => super._value as _$_DownloadsState;
 
   @override
   $Res call({
@@ -253,7 +253,7 @@ class __$$_DownloadStateCopyWithImpl<$Res>
     Object? downloads = freezed,
     Object? downloadFailureOrSuccessOption = freezed,
   }) {
-    return _then(_$_DownloadState(
+    return _then(_$_DownloadsState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -261,7 +261,7 @@ class __$$_DownloadStateCopyWithImpl<$Res>
       downloads: downloads == freezed
           ? _value._downloads
           : downloads // ignore: cast_nullable_to_non_nullable
-              as List<Downloads>?,
+              as List<Downloads>,
       downloadFailureOrSuccessOption: downloadFailureOrSuccessOption == freezed
           ? _value.downloadFailureOrSuccessOption
           : downloadFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -272,22 +272,20 @@ class __$$_DownloadStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DownloadState implements _DownloadState {
-  const _$_DownloadState(
+class _$_DownloadsState implements _DownloadsState {
+  const _$_DownloadsState(
       {required this.isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads> downloads,
       required this.downloadFailureOrSuccessOption})
       : _downloads = downloads;
 
   @override
   final bool isLoading;
-  final List<Downloads>? _downloads;
+  final List<Downloads> _downloads;
   @override
-  List<Downloads>? get downloads {
-    final value = _downloads;
-    if (value == null) return null;
+  List<Downloads> get downloads {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_downloads);
   }
 
   @override
@@ -296,14 +294,14 @@ class _$_DownloadState implements _DownloadState {
 
   @override
   String toString() {
-    return 'DownloadState(isLoading: $isLoading, downloads: $downloads, downloadFailureOrSuccessOption: $downloadFailureOrSuccessOption)';
+    return 'DownloadsState(isLoading: $isLoading, downloads: $downloads, downloadFailureOrSuccessOption: $downloadFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DownloadState &&
+            other is _$_DownloadsState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._downloads, _downloads) &&
@@ -321,26 +319,26 @@ class _$_DownloadState implements _DownloadState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_DownloadStateCopyWith<_$_DownloadState> get copyWith =>
-      __$$_DownloadStateCopyWithImpl<_$_DownloadState>(this, _$identity);
+  _$$_DownloadsStateCopyWith<_$_DownloadsState> get copyWith =>
+      __$$_DownloadsStateCopyWithImpl<_$_DownloadsState>(this, _$identity);
 }
 
-abstract class _DownloadState implements DownloadState {
-  const factory _DownloadState(
+abstract class _DownloadsState implements DownloadsState {
+  const factory _DownloadsState(
       {required final bool isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads> downloads,
       required final Option<Either<DownloadsFailures, List<Downloads>>>
-          downloadFailureOrSuccessOption}) = _$_DownloadState;
+          downloadFailureOrSuccessOption}) = _$_DownloadsState;
 
   @override
   bool get isLoading;
   @override
-  List<Downloads>? get downloads;
+  List<Downloads> get downloads;
   @override
   Option<Either<DownloadsFailures, List<Downloads>>>
       get downloadFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_DownloadStateCopyWith<_$_DownloadState> get copyWith =>
+  _$$_DownloadsStateCopyWith<_$_DownloadsState> get copyWith =>
       throw _privateConstructorUsedError;
 }

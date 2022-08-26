@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:netflixapp/core/failiurs/downloads_failures.dart';
@@ -10,9 +13,10 @@ part 'downloads_event.dart';
 part 'downloads_state.dart';
 part 'downloads_bloc.freezed.dart';
 
-class DownloadsBloc extends Bloc<DownloadsEvent, DownloadState> {
+@injectable
+class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IDownloadRepo _downloadsrepo;
-  DownloadsBloc(this._downloadsrepo) : super(DownloadState.inital()) {
+  DownloadsBloc(this._downloadsrepo) : super(DownloadsState.inital()) {
     on<_GetDownloadsImage>(
       (event, emit) async {
         emit(
@@ -23,10 +27,12 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadState> {
         );
         final Either<DownloadsFailures, List<Downloads>> downloadOption =
             await _downloadsrepo.getDownloadsImage();
+
+        log(downloadOption.toString());
         emit(downloadOption.fold(
           (failure) => state.copyWith(
             isLoading: false,
-            downloadFailureOrSuccessOption: some(
+            downloadFailureOrSuccessOption: Some(
               Left(
                 failure,
               ),
@@ -35,8 +41,8 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadState> {
           (success) => state.copyWith(
             isLoading: false,
             downloads: success,
-            downloadFailureOrSuccessOption: some(
-              right(
+            downloadFailureOrSuccessOption: Some(
+              Right(
                 success,
               ),
             ),

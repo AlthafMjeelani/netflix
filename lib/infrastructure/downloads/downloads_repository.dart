@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:netflixapp/core/failiurs/downloads_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:netflixapp/domain/core/api_endpoints.dart';
 import 'package:netflixapp/domain/downloads/i_downloads_repo.dart';
 import 'package:netflixapp/domain/downloads/models/downloads.dart';
 
+@LazySingleton(as: IDownloadRepo)
 class DownloadRepository implements IDownloadRepo {
   @override
   Future<Either<DownloadsFailures, List<Downloads>>> getDownloadsImage() async {
@@ -12,10 +14,10 @@ class DownloadRepository implements IDownloadRepo {
       final Response response =
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final List<Downloads> downloadList = [];
-        for (var raw in response.data) {
-          downloadList.add(Downloads.fromJson(raw as Map<String, dynamic>));
-        }
+        final downloadList = (response.data['results'] as List)
+            .map((e) => Downloads.fromJson(e))
+            .toList();
+
         return Right(downloadList);
       } else {
         return const Left(DownloadsFailures.serverFailure());
