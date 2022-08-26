@@ -4,6 +4,8 @@ import 'package:netflixapp/core/colors/colors.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/search/widgets/search_result_widget.dart';
 
+import 'widgets/search_idle.dart';
+
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({Key? key}) : super(key: key);
 
@@ -33,9 +35,8 @@ class ScreenSearch extends StatelessWidget {
               ),
               kHeight,
               const Expanded(
-                child:
-                    //  ScreachIdleWidget(),
-                    SearchResultWidget(),
+                child: ScreachIdleWidget(),
+                // SearchResultWidget(),
               ),
             ],
           ),

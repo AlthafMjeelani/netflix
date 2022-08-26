@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:netflixapp/core/failiurs/downloads_failures.dart';
+import 'package:netflixapp/core/failiurs/main_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:netflixapp/domain/core/api_endpoints.dart';
 import 'package:netflixapp/domain/downloads/i_downloads_repo.dart';
@@ -9,7 +9,7 @@ import 'package:netflixapp/domain/downloads/models/downloads.dart';
 @LazySingleton(as: IDownloadRepo)
 class DownloadRepository implements IDownloadRepo {
   @override
-  Future<Either<DownloadsFailures, List<Downloads>>> getDownloadsImage() async {
+  Future<Either<MainFailures, List<Downloads>>> getDownloadsImage() async {
     try {
       final Response response =
           await Dio(BaseOptions()).get(ApiEndPoints.downloads);
@@ -20,10 +20,10 @@ class DownloadRepository implements IDownloadRepo {
 
         return Right(downloadList);
       } else {
-        return const Left(DownloadsFailures.serverFailure());
+        return const Left(MainFailures.serverFailure());
       }
     } catch (e) {
-      return const Left(DownloadsFailures.clintFailure());
+      return const Left(MainFailures.clintFailure());
     }
   }
 }

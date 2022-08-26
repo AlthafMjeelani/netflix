@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:netflixapp/core/failiurs/downloads_failures.dart';
+import 'package:netflixapp/core/failiurs/main_failures.dart';
 import 'package:netflixapp/domain/downloads/i_downloads_repo.dart';
 import 'package:netflixapp/domain/downloads/models/downloads.dart';
 
@@ -25,7 +25,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
             downloadFailureOrSuccessOption: none(),
           ),
         );
-        final Either<DownloadsFailures, List<Downloads>> downloadOption =
+        final Either<MainFailures, List<Downloads>> downloadOption =
             await _downloadsrepo.getDownloadsImage();
 
         log(downloadOption.toString());

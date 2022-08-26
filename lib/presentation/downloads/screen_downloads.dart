@@ -14,15 +14,11 @@ class ScreenDownloads extends StatelessWidget {
 
   final _widget = [
     const SectionOne(),
-    Sectiontwo(),
+    const Sectiontwo(),
     const ScectionThree(),
   ];
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      return BlocProvider.of<DownloadsBloc>(context)
-          .add(const DownloadsEvent.getDownloadsImage());
-    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundcolor,

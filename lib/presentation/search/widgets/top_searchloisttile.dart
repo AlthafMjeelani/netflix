@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/colors/colors.dart';
-import 'package:netflixapp/presentation/search/widgets/search_idle.dart';
 
 class TopSearchListTile extends StatelessWidget {
-  const TopSearchListTile({Key? key}) : super(key: key);
+  const TopSearchListTile({Key? key, required this.imageUrlsearch})
+      : super(key: key);
+  final String imageUrlsearch;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +14,10 @@ class TopSearchListTile extends StatelessWidget {
         Container(
           width: size * 0.4,
           height: 80,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(imageUrl),
+              image: NetworkImage(imageUrlsearch),
+              fit: BoxFit.fill,
             ),
           ),
         ),

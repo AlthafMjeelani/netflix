@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflixapp/application/bloc/downloads_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
+import 'package:netflixapp/core/string_constent.dart';
 import 'package:netflixapp/presentation/widget/title.dart';
 import 'package:netflixapp/presentation/search/widgets/top_searchloisttile.dart';
-
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w250_and_h141_face/l99dylTOAMkwKSr54X5ytiEtnLA.jpg';
 
 class ScreachIdleWidget extends StatelessWidget {
   const ScreachIdleWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<DownloadsBloc>(context)
+        .add(const DownloadsEvent.getDownloadsImage());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,7 +24,14 @@ class ScreachIdleWidget extends StatelessWidget {
           child: ListView.separated(
             shrinkWrap: true,
             itemBuilder: ((context, index) {
-              return const TopSearchListTile();
+              return BlocBuilder<DownloadsBloc, DownloadsState>(
+                builder: (context, state) {
+                  return TopSearchListTile(
+                    imageUrlsearch:
+                        '$kAppendImageUrl${state.downloads[index].posterpath}',
+                  );
+                },
+              );
             }),
             separatorBuilder: ((context, index) {
               return kHeight25;

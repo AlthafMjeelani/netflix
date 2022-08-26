@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'downloads_failures.dart';
+part of 'main_failures.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DownloadsFailures {
+mixin _$MainFailures {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() clintFailure,
@@ -57,20 +57,19 @@ mixin _$DownloadsFailures {
 }
 
 /// @nodoc
-abstract class $DownloadsFailuresCopyWith<$Res> {
-  factory $DownloadsFailuresCopyWith(
-          DownloadsFailures value, $Res Function(DownloadsFailures) then) =
-      _$DownloadsFailuresCopyWithImpl<$Res>;
+abstract class $MainFailuresCopyWith<$Res> {
+  factory $MainFailuresCopyWith(
+          MainFailures value, $Res Function(MainFailures) then) =
+      _$MainFailuresCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DownloadsFailuresCopyWithImpl<$Res>
-    implements $DownloadsFailuresCopyWith<$Res> {
-  _$DownloadsFailuresCopyWithImpl(this._value, this._then);
+class _$MainFailuresCopyWithImpl<$Res> implements $MainFailuresCopyWith<$Res> {
+  _$MainFailuresCopyWithImpl(this._value, this._then);
 
-  final DownloadsFailures _value;
+  final MainFailures _value;
   // ignore: unused_field
-  final $Res Function(DownloadsFailures) _then;
+  final $Res Function(MainFailures) _then;
 }
 
 /// @nodoc
@@ -82,7 +81,7 @@ abstract class _$$_ClintFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ClintFailureCopyWithImpl<$Res>
-    extends _$DownloadsFailuresCopyWithImpl<$Res>
+    extends _$MainFailuresCopyWithImpl<$Res>
     implements _$$_ClintFailureCopyWith<$Res> {
   __$$_ClintFailureCopyWithImpl(
       _$_ClintFailure _value, $Res Function(_$_ClintFailure) _then)
@@ -99,7 +98,7 @@ class _$_ClintFailure implements _ClintFailure {
 
   @override
   String toString() {
-    return 'DownloadsFailures.clintFailure()';
+    return 'MainFailures.clintFailure()';
   }
 
   @override
@@ -174,7 +173,7 @@ class _$_ClintFailure implements _ClintFailure {
   }
 }
 
-abstract class _ClintFailure implements DownloadsFailures {
+abstract class _ClintFailure implements MainFailures {
   const factory _ClintFailure() = _$_ClintFailure;
 }
 
@@ -187,7 +186,7 @@ abstract class _$$_ServerFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ServerFailureCopyWithImpl<$Res>
-    extends _$DownloadsFailuresCopyWithImpl<$Res>
+    extends _$MainFailuresCopyWithImpl<$Res>
     implements _$$_ServerFailureCopyWith<$Res> {
   __$$_ServerFailureCopyWithImpl(
       _$_ServerFailure _value, $Res Function(_$_ServerFailure) _then)
@@ -204,7 +203,7 @@ class _$_ServerFailure implements _ServerFailure {
 
   @override
   String toString() {
-    return 'DownloadsFailures.serverFailure()';
+    return 'MainFailures.serverFailure()';
   }
 
   @override
@@ -279,6 +278,6 @@ class _$_ServerFailure implements _ServerFailure {
   }
 }
 
-abstract class _ServerFailure implements DownloadsFailures {
+abstract class _ServerFailure implements MainFailures {
   const factory _ServerFailure() = _$_ServerFailure;
 }
