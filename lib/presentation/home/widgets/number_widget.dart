@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflixapp/presentation/home/screen_home.dart';
 import 'package:netflixapp/presentation/home/widgets/number_card.dart';
 import 'package:netflixapp/presentation/widget/title.dart';
 

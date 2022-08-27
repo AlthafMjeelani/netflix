@@ -21,19 +21,11 @@ class SearchResponse {
 
 @JsonSerializable()
 class SearchResultData {
-  @JsonKey(name: 'id')
-  int? id;
-
-  @JsonKey(name: 'original_language')
-  String? originalLanguage;
-
   @JsonKey(name: 'poster_path')
   String? posterPath;
 
   String get posterImageUrl => '$kAppendImageUrl$posterPath';
   SearchResultData({
-    this.id,
-    this.originalLanguage,
     this.posterPath,
   });
 

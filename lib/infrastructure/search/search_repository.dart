@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflixapp/core/failiurs/main_failures.dart';
@@ -9,11 +10,14 @@ import 'package:netflixapp/domain/search/models/search_response/search_response.
 @LazySingleton(as: SearchService)
 class SearchRepositoryService implements SearchService {
   @override
-  Future<Either<MainFailures, SearchResponse>> serchMovies(
+  Future<Either<MainFailures, SearchResponse>> SearchMovies(
       {required String movieQuery}) async {
     try {
       final Response response =
-          await Dio(BaseOptions()).get(ApiEndPoints.search);
+          await Dio(BaseOptions()).get(ApiEndPoints.search, queryParameters: {
+        'query': movieQuery,
+      });
+      log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final searchList = SearchResponse.fromJson(response.data);
         return Right(searchList);

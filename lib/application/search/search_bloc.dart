@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflixapp/core/failiurs/main_failures.dart';
@@ -63,12 +63,29 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
 //searchresultstte
-    on<SerchMovie>((event, emit) {
+    on<SerchMovie>((event, emit) async {
       // search call movie api
 
-      searchService.serchMovies(movieQuery: event.movieQuery);
-
+      final _result =
+          await searchService.SearchMovies(movieQuery: event.movieQuery);
+      final _state = _result.fold((MainFailures f) {
+        return const SearchState(
+          isLoading: true,
+          searchResultList: [],
+          idleList: [],
+          isError: true,
+        );
+      }, (SearchResponse r) {
+        return SearchState(
+          isLoading: false,
+          searchResultList: r.results,
+          idleList: [],
+          isError: false,
+        );
+      });
       //show to api
+
+      emit(_state);
     });
   }
 }
