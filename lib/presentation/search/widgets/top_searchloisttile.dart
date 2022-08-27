@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/colors/colors.dart';
+import 'package:netflixapp/core/costents.dart';
 
 class TopSearchListTile extends StatelessWidget {
-  const TopSearchListTile({Key? key, required this.imageUrlsearch})
-      : super(key: key);
-  final String imageUrlsearch;
+  const TopSearchListTile({
+    Key? key,
+    required this.title,
+    required this.imageUrl,
+  }) : super(key: key);
+  final String title;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +21,31 @@ class TopSearchListTile extends StatelessWidget {
           height: 80,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(imageUrlsearch),
+              image: NetworkImage(imageUrl),
               fit: BoxFit.fill,
             ),
           ),
         ),
-        const Text(
-          'Movie Name',
-          style: TextStyle(
-            fontSize: 16,
-            color: whiteColorText,
-            fontWeight: FontWeight.bold,
+        kwidth,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              color: whiteColorText,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        const Spacer(),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.play_circle_outline,
-              color: whiteColorText,
-              size: 40,
-            ))
+        Center(
+          child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.play_circle_outline,
+                color: whiteColorText,
+                size: 40,
+              )),
+        )
       ],
     );
   }

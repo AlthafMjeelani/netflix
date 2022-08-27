@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixapp/application/bloc/downloads_bloc.dart';
+import 'package:netflixapp/application/download/downloads_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/core/string_constent.dart';
 import 'package:netflixapp/presentation/downloads/widgets/download_image_widget.dart';

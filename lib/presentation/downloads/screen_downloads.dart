@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflixapp/application/bloc/downloads_bloc.dart';
 import 'package:netflixapp/core/colors/colors.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/downloads/widgets/section_one.dart';

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixapp/application/bloc/downloads_bloc.dart';
+import 'package:netflixapp/application/download/downloads_bloc.dart';
+import 'package:netflixapp/application/search/search_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/core/string_constent.dart';
 import 'package:netflixapp/presentation/widget/title.dart';
 import 'package:netflixapp/presentation/search/widgets/top_searchloisttile.dart';
 
 class ScreachIdleWidget extends StatelessWidget {
-  const ScreachIdleWidget({Key? key}) : super(key: key);
+  const ScreachIdleWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +24,35 @@ class ScreachIdleWidget extends StatelessWidget {
         ),
         kHeight,
         Expanded(
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: ((context, index) {
-              return BlocBuilder<DownloadsBloc, DownloadsState>(
-                builder: (context, state) {
-                  return TopSearchListTile(
-                    imageUrlsearch:
-                        '$kAppendImageUrl${state.downloads[index].posterpath}',
-                  );
-                },
+          child:
+              BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
+            if (state.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
-            }),
-            separatorBuilder: ((context, index) {
-              return kHeight25;
-            }),
-            itemCount: 10,
-          ),
+            } else if (state.isError) {
+              return const Center(
+                child: Text('Error while getting data'),
+              );
+            } else if (state.idleList.isEmpty) {
+              return const Center(
+                child: Text('List is Empty'),
+              );
+            }
+            return ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: ((context, index) {
+                final moviename = state.idleList[index];
+                return TopSearchListTile(
+                    title: moviename.title ?? 'No Title',
+                    imageUrl: '$kAppendImageUrl${moviename.posterpath}');
+              }),
+              separatorBuilder: ((context, index) {
+                return kHeight25;
+              }),
+              itemCount: state.idleList.length,
+            );
+          }),
         )
       ],
     );
