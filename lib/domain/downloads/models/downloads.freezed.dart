@@ -20,8 +20,10 @@ Downloads _$DownloadsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Downloads {
+// ignore: invalid_annotation_target
   @JsonKey(name: "poster_path")
-  String? get posterpath => throw _privateConstructorUsedError;
+  String? get posterpath =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
 
