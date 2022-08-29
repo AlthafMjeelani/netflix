@@ -8,27 +8,33 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../../application/download/downloads_bloc.dart' as _i7;
-import '../../../application/fastLaugh/fast_laughs_bloc.dart' as _i8;
-import '../../../application/search/search_bloc.dart' as _i9;
-import '../../../infrastructure/downloads/downloads_repository.dart' as _i4;
-import '../../../infrastructure/search/search_repository.dart' as _i6;
-import '../../downloads/i_downloads_repo.dart' as _i3;
+import '../../../application/download/downloads_bloc.dart' as _i9;
+import '../../../application/fastLaugh/fast_laughs_bloc.dart' as _i10;
+import '../../../application/hotnadnew/hot_and_new_bloc.dart' as _i11;
+import '../../../application/search/search_bloc.dart' as _i12;
+import '../../../infrastructure/downloads/downloads_repository.dart' as _i6;
+import '../../../infrastructure/hot_and_new/hot_and_new_repo.dart' as _i4;
+import '../../../infrastructure/search/search_repository.dart' as _i8;
+import '../../downloads/i_downloads_repo.dart' as _i5;
+import '../../hot_and_new/hot_and_new_service.dart' as _i3;
 import '../../search/i_serch_repo.dart'
-    as _i5; // ignore_for_file: unnecessary_lambdas
+    as _i7; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.lazySingleton<_i3.IDownloadRepo>(() => _i4.DownloadRepository());
-  gh.lazySingleton<_i5.SearchService>(() => _i6.SearchRepositoryService());
-  gh.factory<_i7.DownloadsBloc>(
-      () => _i7.DownloadsBloc(get<_i3.IDownloadRepo>()));
-  gh.factory<_i8.FastLaughsBloc>(
-      () => _i8.FastLaughsBloc(get<_i3.IDownloadRepo>()));
-  gh.factory<_i9.SearchBloc>(
-      () => _i9.SearchBloc(get<_i3.IDownloadRepo>(), get<_i5.SearchService>()));
+  gh.lazySingleton<_i3.HotAndNewService>(() => _i4.HotAndNewImplimentation());
+  gh.lazySingleton<_i5.IDownloadRepo>(() => _i6.DownloadRepository());
+  gh.lazySingleton<_i7.SearchService>(() => _i8.SearchRepositoryService());
+  gh.factory<_i9.DownloadsBloc>(
+      () => _i9.DownloadsBloc(get<_i5.IDownloadRepo>()));
+  gh.factory<_i10.FastLaughsBloc>(
+      () => _i10.FastLaughsBloc(get<_i5.IDownloadRepo>()));
+  gh.factory<_i11.HotAndNewBloc>(
+      () => _i11.HotAndNewBloc(get<_i3.HotAndNewService>()));
+  gh.factory<_i12.SearchBloc>(() =>
+      _i12.SearchBloc(get<_i5.IDownloadRepo>(), get<_i7.SearchService>()));
   return get;
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/colors/colors.dart';
-import 'package:netflixapp/core/costents.dart';
 
 class NewAndHoteCardWidget extends StatelessWidget {
   const NewAndHoteCardWidget({
     Key? key,
+    required this.imageurl,
   }) : super(key: key);
-
+  final String imageurl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -15,7 +15,7 @@ class NewAndHoteCardWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            homepageImage[7],
+            imageurl,
             fit: BoxFit.fill,
           ),
         ),

@@ -6,9 +6,21 @@ import 'package:netflixapp/presentation/search/widgets/video_card_widget.dart';
 import '../../../core/colors/colors.dart';
 
 class NewAndHotComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterpath;
+  final String movieName;
+  final String description;
   const NewAndHotComingSoonWidget({
     Key? key,
     required this.index,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterpath,
+    required this.movieName,
+    required this.description,
   }) : super(key: key);
 
   final int index;
@@ -19,18 +31,18 @@ class NewAndHotComingSoonWidget extends StatelessWidget {
       children: [
         SizedBox(
           width: 50,
-          height: 450,
+          height: 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text(
-                'Feb',
-                style: TextStyle(
+              Text(
+                month,
+                style: const TextStyle(
                   color: greyColor,
                 ),
               ),
               Text(
-                '${index + 11}',
+                day,
                 style: appbarTextStyle,
               )
             ],
@@ -38,20 +50,25 @@ class NewAndHotComingSoonWidget extends StatelessWidget {
         ),
         Expanded(
           child: SizedBox(
-            height: 450,
+            height: 500,
             width: 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const NewAndHoteCardWidget(),
+                NewAndHoteCardWidget(
+                  imageurl: posterpath,
+                ),
                 kHeight,
                 Row(
                   children: [
-                    Text(
-                      'TALL GIRL 2',
-                      style: newAndHotTextStyle,
+                    Expanded(
+                      child: Text(
+                        movieName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: appbarTextStyle,
+                      ),
                     ),
-                    const Spacer(),
                     const CostomButton(
                       icon: Icons.add_alert,
                       fontSize: 12,
@@ -67,18 +84,22 @@ class NewAndHotComingSoonWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Coming on Friday',
+                  'Coming on $day $month',
                   style: fontSize,
                 ),
                 kHeight,
                 Text(
-                  'Tall Girl 2',
+                  movieName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: newAndHotTextStyle,
                 ),
                 kHeight,
-                const Text(
-                  'Landing the lead in the school musical is a\ndream come true for jodi uniol the pressure\nsends her cofidence - and her relationship-\ninto a tailspin',
-                  style: TextStyle(color: greyColor),
+                Text(
+                  description,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: greyColor),
                 )
               ],
             ),
