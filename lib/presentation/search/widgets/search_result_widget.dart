@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixapp/application/download/downloads_bloc.dart';
 import 'package:netflixapp/application/search/search_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/widget/title.dart';
@@ -13,9 +12,6 @@ class SearchResultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<DownloadsBloc>(context)
-        .add(const DownloadsEvent.getDownloadsImage());
-    print("sfggfghdhdghg");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,7 +22,6 @@ class SearchResultWidget extends StatelessWidget {
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
             builder: (context, state) {
-              print("sfggfghdhdghg${state.searchResultList}");
               return GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 3,

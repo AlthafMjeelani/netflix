@@ -1,24 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:netflixapp/application/hotnadnew/hot_and_new_bloc.dart';
 import 'package:netflixapp/core/colors/colors.dart';
 import 'package:netflixapp/core/costents.dart';
-import 'package:netflixapp/core/string_constent.dart';
 import 'package:netflixapp/presentation/new_and_hot/coming_soon_list.dart';
-import 'package:netflixapp/presentation/new_and_hot/widget/listview_coming_soon.dart';
-import 'package:netflixapp/presentation/new_and_hot/widget/listview_everyone_watching.dart';
+import 'package:netflixapp/presentation/new_and_hot/every_one_watching_list.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      BlocProvider.of<HotAndNewBloc>(context).add(const LoaddataInComingSoon());
-    });
     return DefaultTabController(
       length: 2,
       child: Padding(
@@ -66,27 +58,20 @@ class ScreenNewAndHot extends StatelessWidget {
             ),
           ),
           backgroundColor: backgroundcolor,
-          body: SafeArea(
+          body: const SafeArea(
             child: TabBarView(
               children: [
-                const ComingSoonList(
+                ComingSoonList(
                   key: Key('Coming_Soon'),
                 ),
-                _buildEveryoneWatching(),
+                EveryOneIsWatchingList(
+                  key: Key('Every_OneIs_Watching'),
+                ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildEveryoneWatching() {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return const SizedBox();
-      },
-      itemCount: 10,
     );
   }
 }

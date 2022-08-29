@@ -12,57 +12,67 @@ class ComingSoonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HotAndNewBloc, HotAndNewState>(
-      builder: (context, state) {
-        if (state.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-            ),
-          );
-        } else if (state.hasError) {
-          return const Center(
-            child: Text('Error While getting Data'),
-          );
-        } else if (state.comingSoonList.isEmpty) {
-          return const Center(
-            child: Text('VideoList empty'),
-          );
-        } else {
-          return ListView.builder(
-              itemCount: state.comingSoonList.length,
-              itemBuilder: (context, index) {
-                final movie = state.comingSoonList[index];
-
-                if (movie.id == null) {
-                  return const SizedBox();
-                }
-
-                String month = '';
-                String day = '';
-
-                try {
-                  final date = DateTime.tryParse(movie.releaseDate!);
-                  final formatedDate = DateFormat.yMMMMd('en_US').format(date!);
-                  log(formatedDate);
-                  month = formatedDate.split(' ').first.substring(0, 3);
-                  day = movie.releaseDate!.split('-')[1];
-                } catch (e) {
-                  month = '';
-                  day = '';
-                }
-
-                return NewAndHotComingSoonWidget(
-                    index: index,
-                    id: movie.id.toString(),
-                    month: month,
-                    day: day,
-                    posterpath: '$kAppendImageUrl${movie.posterPath}',
-                    movieName: movie.originalTitle ?? 'No Title',
-                    description: movie.overview ?? "NO Description");
-              });
-        }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      BlocProvider.of<HotAndNewBloc>(context).add(const LoaddataInComingSoon());
+    });
+    return RefreshIndicator(
+      onRefresh: () async {
+        BlocProvider.of<HotAndNewBloc>(context)
+            .add(const LoaddataInComingSoon());
       },
+      child: BlocBuilder<HotAndNewBloc, HotAndNewState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+              ),
+            );
+          } else if (state.hasError) {
+            return const Center(
+              child: Text('Error While getting Data'),
+            );
+          } else if (state.comingSoonList.isEmpty) {
+            return const Center(
+              child: Text('VideoList empty'),
+            );
+          } else {
+            return ListView.builder(
+                itemCount: state.comingSoonList.length,
+                itemBuilder: (context, index) {
+                  final movie = state.comingSoonList[index];
+
+                  if (movie.id == null) {
+                    return const SizedBox();
+                  }
+
+                  String month = '';
+                  String day = '';
+
+                  try {
+                    final date = DateTime.tryParse(movie.releaseDate!);
+                    final formatedDate =
+                        DateFormat.yMMMMd('en_US').format(date!);
+                    log(formatedDate);
+                    month = formatedDate.split(' ').first.substring(0, 3);
+                    day = movie.releaseDate!.split('-')[1];
+                  } catch (e) {
+                    month = '';
+                    day = '';
+                  }
+
+                  return NewAndHotComingSoonWidget(
+                      index: index,
+                      id: movie.id.toString(),
+                      month: month,
+                      day: day,
+                      posterpath: '$kAppendImageUrl${movie.posterPath}',
+                      movieName: movie.originalTitle ?? 'No Title',
+                      description: movie.overview ?? "NO Description");
+                });
+          }
+        },
+      ),
     );
   }
 }

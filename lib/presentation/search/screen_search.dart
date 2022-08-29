@@ -15,12 +15,11 @@ class ScreenSearch extends StatelessWidget {
   final _debouncer = Debouncer(milliseconds: 1 * 1000);
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   BlocProvider.of<SearchBloc>(context).add(const Initialize());
-    // });
-
-    BlocProvider.of<SearchBloc>(context).add(const Initialize());
-    // BlocProvider.of<SearchBloc>(context).add( ));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<SearchBloc>(context).add(
+        const SearchEvent.initialize(),
+      );
+    });
     return Scaffold(
       backgroundColor: backgroundcolor,
       body: SafeArea(
@@ -50,7 +49,6 @@ class ScreenSearch extends StatelessWidget {
               Expanded(
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
-                    print(state.searchResultList);
                     if (state.searchResultList.isEmpty) {
                       return const ScreachIdleWidget();
                     }

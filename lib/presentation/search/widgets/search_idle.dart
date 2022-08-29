@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflixapp/application/download/downloads_bloc.dart';
 import 'package:netflixapp/application/search/search_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/core/string_constent.dart';
@@ -14,8 +13,6 @@ class ScreachIdleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<DownloadsBloc>(context)
-        .add(const DownloadsEvent.getDownloadsImage());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -23,10 +23,13 @@ class SearchResponse {
 class SearchResultData {
   @JsonKey(name: 'poster_path')
   String? posterPath;
+  @JsonKey(name: 'original_title')
+  String? originalTitle;
 
   String get posterImageUrl => '$kAppendImageUrl$posterPath';
   SearchResultData({
     this.posterPath,
+    this.originalTitle,
   });
 
   factory SearchResultData.fromJson(Map<String, dynamic> json) {
