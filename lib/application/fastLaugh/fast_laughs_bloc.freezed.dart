@@ -473,7 +473,6 @@ abstract class UnlikeVideo implements FastLaughsEvent {
 /// @nodoc
 mixin _$FastLaughsState {
   List<Downloads> get videosLis => throw _privateConstructorUsedError;
-  List<int> get likeVideosId => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
@@ -487,11 +486,7 @@ abstract class $FastLaughsStateCopyWith<$Res> {
   factory $FastLaughsStateCopyWith(
           FastLaughsState value, $Res Function(FastLaughsState) then) =
       _$FastLaughsStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<Downloads> videosLis,
-      List<int> likeVideosId,
-      bool isLoading,
-      bool isError});
+  $Res call({List<Downloads> videosLis, bool isLoading, bool isError});
 }
 
 /// @nodoc
@@ -506,7 +501,6 @@ class _$FastLaughsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? videosLis = freezed,
-    Object? likeVideosId = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
@@ -515,10 +509,6 @@ class _$FastLaughsStateCopyWithImpl<$Res>
           ? _value.videosLis
           : videosLis // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
-      likeVideosId: likeVideosId == freezed
-          ? _value.likeVideosId
-          : likeVideosId // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -538,11 +528,7 @@ abstract class _$$_InitialCopyWith<$Res>
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {List<Downloads> videosLis,
-      List<int> likeVideosId,
-      bool isLoading,
-      bool isError});
+  $Res call({List<Downloads> videosLis, bool isLoading, bool isError});
 }
 
 /// @nodoc
@@ -557,7 +543,6 @@ class __$$_InitialCopyWithImpl<$Res> extends _$FastLaughsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? videosLis = freezed,
-    Object? likeVideosId = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
@@ -566,10 +551,6 @@ class __$$_InitialCopyWithImpl<$Res> extends _$FastLaughsStateCopyWithImpl<$Res>
           ? _value._videosLis
           : videosLis // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
-      likeVideosId: likeVideosId == freezed
-          ? _value._likeVideosId
-          : likeVideosId // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -587,24 +568,15 @@ class __$$_InitialCopyWithImpl<$Res> extends _$FastLaughsStateCopyWithImpl<$Res>
 class _$_Initial implements _Initial {
   const _$_Initial(
       {required final List<Downloads> videosLis,
-      required final List<int> likeVideosId,
       required this.isLoading,
       required this.isError})
-      : _videosLis = videosLis,
-        _likeVideosId = likeVideosId;
+      : _videosLis = videosLis;
 
   final List<Downloads> _videosLis;
   @override
   List<Downloads> get videosLis {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_videosLis);
-  }
-
-  final List<int> _likeVideosId;
-  @override
-  List<int> get likeVideosId {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_likeVideosId);
   }
 
   @override
@@ -614,7 +586,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'FastLaughsState(videosLis: $videosLis, likeVideosId: $likeVideosId, isLoading: $isLoading, isError: $isError)';
+    return 'FastLaughsState(videosLis: $videosLis, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -624,8 +596,6 @@ class _$_Initial implements _Initial {
             other is _$_Initial &&
             const DeepCollectionEquality()
                 .equals(other._videosLis, _videosLis) &&
-            const DeepCollectionEquality()
-                .equals(other._likeVideosId, _likeVideosId) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.isError, isError));
   }
@@ -634,7 +604,6 @@ class _$_Initial implements _Initial {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_videosLis),
-      const DeepCollectionEquality().hash(_likeVideosId),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));
 
@@ -647,14 +616,11 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements FastLaughsState {
   const factory _Initial(
       {required final List<Downloads> videosLis,
-      required final List<int> likeVideosId,
       required final bool isLoading,
       required final bool isError}) = _$_Initial;
 
   @override
   List<Downloads> get videosLis;
-  @override
-  List<int> get likeVideosId;
   @override
   bool get isLoading;
   @override

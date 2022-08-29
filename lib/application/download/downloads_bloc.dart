@@ -19,7 +19,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
         emit(
           state.copyWith(
             isLoading: true,
-            downloadFailureOrSuccessOption: none(),
+            downloadFailureOrSuccessOption: const None(),
           ),
         );
         final Either<MainFailures, List<Downloads>> downloadOption =
@@ -35,25 +35,27 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           // );
           // return;
         }
-        emit(downloadOption.fold(
-          (failure) => state.copyWith(
-            isLoading: false,
-            downloadFailureOrSuccessOption: Some(
-              Left(
-                failure,
+        emit(
+          downloadOption.fold(
+            (failure) => state.copyWith(
+              isLoading: false,
+              downloadFailureOrSuccessOption: Some(
+                Left(
+                  failure,
+                ),
+              ),
+            ),
+            (success) => state.copyWith(
+              isLoading: false,
+              downloads: success,
+              downloadFailureOrSuccessOption: Some(
+                Right(
+                  success,
+                ),
               ),
             ),
           ),
-          (success) => state.copyWith(
-            isLoading: false,
-            downloads: success,
-            downloadFailureOrSuccessOption: Some(
-              Right(
-                success,
-              ),
-            ),
-          ),
-        ));
+        );
       },
     );
   }

@@ -76,35 +76,41 @@ class VideoListItem extends StatelessWidget {
                           : NetworkImage('$kAppendImageUrl$postalPath'),
                     ),
                     kHeight25,
-                    BlocBuilder<FastLaughsBloc, FastLaughsState>(
-                      builder: (context, state) {
-                        final likedIndex = index;
+                    ValueListenableBuilder(
+                        valueListenable: likedVideoIdNotifier,
+                        builder: (BuildContext c, Set<int> newLikedListIds,
+                            Widget? _) {
+                          final likedIndex = index;
 
-                        if (state.likeVideosId.contains(likedIndex)) {
-                          return GestureDetector(
-                            onTap: () {
-                              BlocProvider.of<FastLaughsBloc>(context)
-                                  .add(UnlikeVideo(id: likedIndex));
-                            },
-                            child: const VideoActionIcons(
-                              head: Icons.favorite,
-                              sub: 'LOL',
-                            ),
-                          );
-                        } else {
-                          return GestureDetector(
-                            onTap: () {
-                              BlocProvider.of<FastLaughsBloc>(context)
-                                  .add(LikeVideo(id: likedIndex));
-                            },
-                            child: const VideoActionIcons(
-                              head: Icons.emoji_emotions,
-                              sub: 'LOL',
-                            ),
-                          );
-                        }
-                      },
-                    ),
+                          if (newLikedListIds.contains(likedIndex)) {
+                            return GestureDetector(
+                              onTap: () {
+                                // BlocProvider.of<FastLaughsBloc>(context)
+                                //     .add(UnlikeVideo(id: likedIndex));
+
+                                likedVideoIdNotifier.value.remove(index);
+                                likedVideoIdNotifier.notifyListeners();
+                              },
+                              child: const VideoActionIcons(
+                                head: Icons.favorite,
+                                sub: 'LOL',
+                              ),
+                            );
+                          } else {
+                            return GestureDetector(
+                              onTap: () {
+                                likedVideoIdNotifier.value.add(index);
+                                likedVideoIdNotifier.notifyListeners();
+                                // BlocProvider.of<FastLaughsBloc>(context)
+                                //     .add(LikeVideo(id: likedIndex));
+                              },
+                              child: const VideoActionIcons(
+                                head: Icons.emoji_emotions,
+                                sub: 'LOL',
+                              ),
+                            );
+                          }
+                        }),
                     kHeight25,
                     const VideoActionIcons(
                       head: Icons.add,

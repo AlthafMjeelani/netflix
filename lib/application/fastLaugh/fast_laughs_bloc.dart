@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,8 @@ final videoUrls = [
   'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
 ];
 
+ValueNotifier<Set<int>> likedVideoIdNotifier = ValueNotifier({});
+
 @injectable
 class FastLaughsBloc extends Bloc<FastLaughsEvent, FastLaughsState> {
   FastLaughsBloc(
@@ -27,7 +30,6 @@ class FastLaughsBloc extends Bloc<FastLaughsEvent, FastLaughsState> {
         videosLis: [],
         isLoading: true,
         isError: false,
-        likeVideosId: [],
       ));
       //trending  movies
 
@@ -37,14 +39,12 @@ class FastLaughsBloc extends Bloc<FastLaughsEvent, FastLaughsState> {
           videosLis: [],
           isLoading: false,
           isError: true,
-          likeVideosId: state.likeVideosId,
         );
       },
           (response) => FastLaughsState(
                 videosLis: response,
                 isLoading: false,
                 isError: false,
-                likeVideosId: state.likeVideosId,
               ));
       // send to ui
 
@@ -52,15 +52,13 @@ class FastLaughsBloc extends Bloc<FastLaughsEvent, FastLaughsState> {
     });
 
     on<LikeVideo>((event, emit) {
-      final list = state.likeVideosId;
-      list.add(event.id);
-      emit(state.copyWith(likeVideosId: list));
+      likedVideoIdNotifier.value.add(event.id);
+      likedVideoIdNotifier.notifyListeners();
     });
 
     on<UnlikeVideo>((event, emit) {
-      final list = state.likeVideosId;
-      list.remove(event.id);
-      emit(state.copyWith(likeVideosId: list));
+      likedVideoIdNotifier.value.remove(event.id);
+      likedVideoIdNotifier.notifyListeners();
     });
   }
 }
