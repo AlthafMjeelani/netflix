@@ -8,7 +8,7 @@ part of 'search_response.dart';
 
 SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
     SearchResponse(
-      results: (json['SearchResultDatas'] as List<dynamic>?)
+      results: (json['results'] as List<dynamic>?)
               ?.map((e) => SearchResultData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -16,17 +16,19 @@ SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) =>
     <String, dynamic>{
-      'SearchResultDatas': instance.results,
+      'results': instance.results,
     };
 
 SearchResultData _$SearchResultDataFromJson(Map<String, dynamic> json) =>
     SearchResultData(
-      posterPath: json['poster_path'] as String?,
+      id: json['id'] as int?,
       originalTitle: json['original_title'] as String?,
+      posterPath: json['poster_path'] as String?,
     );
 
 Map<String, dynamic> _$SearchResultDataToJson(SearchResultData instance) =>
     <String, dynamic>{
-      'poster_path': instance.posterPath,
+      'id': instance.id,
       'original_title': instance.originalTitle,
+      'poster_path': instance.posterPath,
     };

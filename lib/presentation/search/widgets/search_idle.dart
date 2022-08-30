@@ -31,7 +31,7 @@ class ScreachIdleWidget extends StatelessWidget {
               return const Center(
                 child: Text('Error while getting data'),
               );
-            } else if (state.idleList.isEmpty) {
+            } else if (state.searchIdleList.isEmpty) {
               return const Center(
                 child: Text('List is Empty'),
               );
@@ -39,7 +39,7 @@ class ScreachIdleWidget extends StatelessWidget {
             return ListView.separated(
               shrinkWrap: true,
               itemBuilder: ((context, index) {
-                final moviename = state.idleList[index];
+                final moviename = state.searchIdleList[index];
                 return TopSearchListTile(
                     title: moviename.title ?? 'No Title',
                     imageUrl: '$kAppendImageUrl${moviename.posterpath}');
@@ -47,7 +47,7 @@ class ScreachIdleWidget extends StatelessWidget {
               separatorBuilder: ((context, index) {
                 return kHeight25;
               }),
-              itemCount: state.idleList.length,
+              itemCount: state.searchIdleList.length,
             );
           }),
         )

@@ -3,16 +3,18 @@ part of 'search_bloc.dart';
 @freezed
 class SearchState with _$SearchState {
   const factory SearchState({
-    required bool isLoading,
     required List<SearchResultData> searchResultList,
-    required List<Downloads> idleList,
+    required List<Downloads> searchIdleList,
+    required bool isLoading,
     required bool isError,
   }) = _SearchState;
 
-  factory SearchState.initialize() => const SearchState(
-        isLoading: false,
-        searchResultList: [],
-        idleList: [],
-        isError: false,
-      );
+  factory SearchState.initial() {
+    return const SearchState(
+      searchResultList: [],
+      searchIdleList: [],
+      isLoading: false,
+      isError: false,
+    );
+  }
 }

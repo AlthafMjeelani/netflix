@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflixapp/application/search/search_bloc.dart';
 import 'package:netflixapp/core/costents.dart';
+import 'package:netflixapp/core/string_constent.dart';
 import 'package:netflixapp/presentation/widget/title.dart';
 import 'package:netflixapp/presentation/widget/main_card.dart';
 
@@ -29,10 +30,9 @@ class SearchResultWidget extends StatelessWidget {
                 mainAxisSpacing: 10,
                 childAspectRatio: 1 / 2,
                 children: List.generate(20, (index) {
-                  final movie = state.searchResultList[index];
                   return MainCardWidget(
-                    listImageUrl: movie.posterImageUrl,
-                  );
+                      listImageUrl:
+                          "$kAppendImageUrl${state.searchResultList[index].posterPath}");
                 }),
               );
             },

@@ -1,11 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:netflixapp/core/string_constent.dart';
-
 part 'search_response.g.dart';
 
 @JsonSerializable()
 class SearchResponse {
-  @JsonKey(name: 'SearchResultDatas')
+  @JsonKey(name: 'results')
   List<SearchResultData> results;
 
   SearchResponse({
@@ -21,15 +19,17 @@ class SearchResponse {
 
 @JsonSerializable()
 class SearchResultData {
-  @JsonKey(name: 'poster_path')
-  String? posterPath;
+  @JsonKey(name: 'id')
+  int? id;
   @JsonKey(name: 'original_title')
   String? originalTitle;
+  @JsonKey(name: 'poster_path')
+  String? posterPath;
 
-  String get posterImageUrl => '$kAppendImageUrl$posterPath';
   SearchResultData({
-    this.posterPath,
+    this.id,
     this.originalTitle,
+    this.posterPath,
   });
 
   factory SearchResultData.fromJson(Map<String, dynamic> json) {

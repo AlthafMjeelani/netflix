@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -13,79 +14,99 @@ part 'search_bloc.freezed.dart';
 
 @injectable
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final IDownloadRepo downloadsService;
-  final SearchService searchService;
-  SearchBloc(this.downloadsService, this.searchService)
-      : super(SearchState.initialize()) {
-    //idlestate
+  final IDownloadRepo downloadsFazard;
+  final ISearchFazard searchFazard;
+  SearchBloc(
+    this.downloadsFazard,
+    this.searchFazard,
+  ) : super(SearchState.initial()) {
+    //On Search Idle State
     on<Initialize>((event, emit) async {
-      if (state.idleList.isNotEmpty) {
-        emit(
-          SearchState(
-            isLoading: false,
-            searchResultList: [],
-            idleList: state.idleList,
-            isError: false,
-          ),
-        );
+      if (state.searchIdleList.isNotEmpty) {
+        emit(state.copyWith(
+          searchIdleList: state.searchIdleList,
+          searchResultList: [],
+          isLoading: false,
+          isError: false,
+        ));
         return;
       }
+      //Showing loading for initial condition
       emit(
-        const SearchState(
-          isLoading: true,
+        state.copyWith(
+          searchIdleList: [],
           searchResultList: [],
-          idleList: [],
+          isLoading: true,
           isError: false,
         ),
       );
-      //get trending
-      final result = await downloadsService.getDownloadsImage();
-      final stateResult = result.fold(
-        (MainFailures fail) {
-          return const SearchState(
-            isLoading: false,
-            searchResultList: [],
-            idleList: [],
-            isError: true,
+      // get trending movies list from list of downloads
+      final idleSearchState = await downloadsFazard.getDownloadsImage();
+      idleSearchState.fold(
+        (MainFailures failure) {
+          emit(
+            state.copyWith(
+              searchIdleList: [],
+              searchResultList: [],
+              isLoading: false,
+              isError: true,
+            ),
           );
         },
-        (List<Downloads> list) {
-          return SearchState(
-            isLoading: false,
-            searchResultList: [],
-            idleList: list,
-            isError: false,
+        (List<Downloads> success) {
+          emit(
+            state.copyWith(
+              searchIdleList: success,
+              searchResultList: [],
+              isLoading: false,
+              isError: false,
+            ),
           );
         },
       );
-      //show to ui
-      emit(stateResult);
+      emit(state);
     });
 
-//searchresultstte
-    on<SerchMovie>((event, emit) async {
-      // search call movie api
-
-      final result =
-          await searchService.SearchMovies(movieQuery: event.movieQuery);
-      final newState = result.fold((MainFailures f) {
-        return const SearchState(
-          isLoading: true,
-          searchResultList: [],
-          idleList: [],
-          isError: true,
+    //On Search result state
+    on<SearchMovie>(
+      (event, emit) async {
+        emit(
+          state.copyWith(
+            searchIdleList: [],
+            searchResultList: [],
+            isLoading: true,
+            isError: false,
+          ),
         );
-      }, (SearchResponse r) {
-        return SearchState(
-          isLoading: false,
-          searchResultList: r.results,
-          idleList: [],
-          isError: false,
-        );
-      });
-      //show to api
+        log('searching for ${event.movieQuery}');
+        // call search movie API
+        final searchResultState =
+            await searchFazard.getSearchMovies(movieQuery: event.movieQuery);
+        print(searchResultState);
 
-      emit(newState);
-    });
+        searchResultState.fold(
+          (MainFailures failure) {
+            emit(
+              state.copyWith(
+                searchIdleList: [],
+                searchResultList: [],
+                isLoading: false,
+                isError: true,
+              ),
+            );
+          },
+          (SearchResponse success) {
+            emit(
+              state.copyWith(
+                searchIdleList: [],
+                searchResultList: success.results,
+                isLoading: false,
+                isError: true,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }

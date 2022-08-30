@@ -38,19 +38,19 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialize value) initialize,
-    required TResult Function(SerchMovie value) searchMovie,
+    required TResult Function(SearchMovie value) searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$Initialize implements Initialize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialize value) initialize,
-    required TResult Function(SerchMovie value) searchMovie,
+    required TResult Function(SearchMovie value) searchMovie,
   }) {
     return initialize(this);
   }
@@ -153,7 +153,7 @@ class _$Initialize implements Initialize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
   }) {
     return initialize?.call(this);
   }
@@ -162,7 +162,7 @@ class _$Initialize implements Initialize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -177,28 +177,28 @@ abstract class Initialize implements SearchEvent {
 }
 
 /// @nodoc
-abstract class _$$SerchMovieCopyWith<$Res> {
-  factory _$$SerchMovieCopyWith(
-          _$SerchMovie value, $Res Function(_$SerchMovie) then) =
-      __$$SerchMovieCopyWithImpl<$Res>;
+abstract class _$$SearchMovieCopyWith<$Res> {
+  factory _$$SearchMovieCopyWith(
+          _$SearchMovie value, $Res Function(_$SearchMovie) then) =
+      __$$SearchMovieCopyWithImpl<$Res>;
   $Res call({String movieQuery});
 }
 
 /// @nodoc
-class __$$SerchMovieCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
-    implements _$$SerchMovieCopyWith<$Res> {
-  __$$SerchMovieCopyWithImpl(
-      _$SerchMovie _value, $Res Function(_$SerchMovie) _then)
-      : super(_value, (v) => _then(v as _$SerchMovie));
+class __$$SearchMovieCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$SearchMovieCopyWith<$Res> {
+  __$$SearchMovieCopyWithImpl(
+      _$SearchMovie _value, $Res Function(_$SearchMovie) _then)
+      : super(_value, (v) => _then(v as _$SearchMovie));
 
   @override
-  _$SerchMovie get _value => super._value as _$SerchMovie;
+  _$SearchMovie get _value => super._value as _$SearchMovie;
 
   @override
   $Res call({
     Object? movieQuery = freezed,
   }) {
-    return _then(_$SerchMovie(
+    return _then(_$SearchMovie(
       movieQuery: movieQuery == freezed
           ? _value.movieQuery
           : movieQuery // ignore: cast_nullable_to_non_nullable
@@ -209,8 +209,8 @@ class __$$SerchMovieCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SerchMovie implements SerchMovie {
-  const _$SerchMovie({required this.movieQuery});
+class _$SearchMovie implements SearchMovie {
+  const _$SearchMovie({required this.movieQuery});
 
   @override
   final String movieQuery;
@@ -224,7 +224,7 @@ class _$SerchMovie implements SerchMovie {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SerchMovie &&
+            other is _$SearchMovie &&
             const DeepCollectionEquality()
                 .equals(other.movieQuery, movieQuery));
   }
@@ -235,8 +235,8 @@ class _$SerchMovie implements SerchMovie {
 
   @JsonKey(ignore: true)
   @override
-  _$$SerchMovieCopyWith<_$SerchMovie> get copyWith =>
-      __$$SerchMovieCopyWithImpl<_$SerchMovie>(this, _$identity);
+  _$$SearchMovieCopyWith<_$SearchMovie> get copyWith =>
+      __$$SearchMovieCopyWithImpl<_$SearchMovie>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -273,7 +273,7 @@ class _$SerchMovie implements SerchMovie {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialize value) initialize,
-    required TResult Function(SerchMovie value) searchMovie,
+    required TResult Function(SearchMovie value) searchMovie,
   }) {
     return searchMovie(this);
   }
@@ -282,7 +282,7 @@ class _$SerchMovie implements SerchMovie {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
   }) {
     return searchMovie?.call(this);
   }
@@ -291,7 +291,7 @@ class _$SerchMovie implements SerchMovie {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
-    TResult Function(SerchMovie value)? searchMovie,
+    TResult Function(SearchMovie value)? searchMovie,
     required TResult orElse(),
   }) {
     if (searchMovie != null) {
@@ -301,21 +301,21 @@ class _$SerchMovie implements SerchMovie {
   }
 }
 
-abstract class SerchMovie implements SearchEvent {
-  const factory SerchMovie({required final String movieQuery}) = _$SerchMovie;
+abstract class SearchMovie implements SearchEvent {
+  const factory SearchMovie({required final String movieQuery}) = _$SearchMovie;
 
   String get movieQuery;
   @JsonKey(ignore: true)
-  _$$SerchMovieCopyWith<_$SerchMovie> get copyWith =>
+  _$$SearchMovieCopyWith<_$SearchMovie> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SearchState {
-  bool get isLoading => throw _privateConstructorUsedError;
   List<SearchResultData> get searchResultList =>
       throw _privateConstructorUsedError;
-  List<Downloads> get idleList => throw _privateConstructorUsedError;
+  List<Downloads> get searchIdleList => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -329,9 +329,9 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
-      List<SearchResultData> searchResultList,
-      List<Downloads> idleList,
+      {List<SearchResultData> searchResultList,
+      List<Downloads> searchIdleList,
+      bool isLoading,
       bool isError});
 }
 
@@ -345,24 +345,24 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? isLoading = freezed,
     Object? searchResultList = freezed,
-    Object? idleList = freezed,
+    Object? searchIdleList = freezed,
+    Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       searchResultList: searchResultList == freezed
           ? _value.searchResultList
           : searchResultList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
-      idleList: idleList == freezed
-          ? _value.idleList
-          : idleList // ignore: cast_nullable_to_non_nullable
+      searchIdleList: searchIdleList == freezed
+          ? _value.searchIdleList
+          : searchIdleList // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isError: isError == freezed
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
@@ -379,9 +379,9 @@ abstract class _$$_SearchStateCopyWith<$Res>
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
-      List<SearchResultData> searchResultList,
-      List<Downloads> idleList,
+      {List<SearchResultData> searchResultList,
+      List<Downloads> searchIdleList,
+      bool isLoading,
       bool isError});
 }
 
@@ -397,24 +397,24 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isLoading = freezed,
     Object? searchResultList = freezed,
-    Object? idleList = freezed,
+    Object? searchIdleList = freezed,
+    Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
     return _then(_$_SearchState(
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       searchResultList: searchResultList == freezed
           ? _value._searchResultList
           : searchResultList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
-      idleList: idleList == freezed
-          ? _value._idleList
-          : idleList // ignore: cast_nullable_to_non_nullable
+      searchIdleList: searchIdleList == freezed
+          ? _value._searchIdleList
+          : searchIdleList // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isError: isError == freezed
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
@@ -427,15 +427,13 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 
 class _$_SearchState implements _SearchState {
   const _$_SearchState(
-      {required this.isLoading,
-      required final List<SearchResultData> searchResultList,
-      required final List<Downloads> idleList,
+      {required final List<SearchResultData> searchResultList,
+      required final List<Downloads> searchIdleList,
+      required this.isLoading,
       required this.isError})
       : _searchResultList = searchResultList,
-        _idleList = idleList;
+        _searchIdleList = searchIdleList;
 
-  @override
-  final bool isLoading;
   final List<SearchResultData> _searchResultList;
   @override
   List<SearchResultData> get searchResultList {
@@ -443,19 +441,21 @@ class _$_SearchState implements _SearchState {
     return EqualUnmodifiableListView(_searchResultList);
   }
 
-  final List<Downloads> _idleList;
+  final List<Downloads> _searchIdleList;
   @override
-  List<Downloads> get idleList {
+  List<Downloads> get searchIdleList {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_idleList);
+    return EqualUnmodifiableListView(_searchIdleList);
   }
 
+  @override
+  final bool isLoading;
   @override
   final bool isError;
 
   @override
   String toString() {
-    return 'SearchState(isLoading: $isLoading, searchResultList: $searchResultList, idleList: $idleList, isError: $isError)';
+    return 'SearchState(searchResultList: $searchResultList, searchIdleList: $searchIdleList, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -463,19 +463,20 @@ class _$_SearchState implements _SearchState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchState &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._searchResultList, _searchResultList) &&
-            const DeepCollectionEquality().equals(other._idleList, _idleList) &&
+            const DeepCollectionEquality()
+                .equals(other._searchIdleList, _searchIdleList) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(_searchResultList),
-      const DeepCollectionEquality().hash(_idleList),
+      const DeepCollectionEquality().hash(_searchIdleList),
+      const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
@@ -486,17 +487,17 @@ class _$_SearchState implements _SearchState {
 
 abstract class _SearchState implements SearchState {
   const factory _SearchState(
-      {required final bool isLoading,
-      required final List<SearchResultData> searchResultList,
-      required final List<Downloads> idleList,
+      {required final List<SearchResultData> searchResultList,
+      required final List<Downloads> searchIdleList,
+      required final bool isLoading,
       required final bool isError}) = _$_SearchState;
 
   @override
-  bool get isLoading;
-  @override
   List<SearchResultData> get searchResultList;
   @override
-  List<Downloads> get idleList;
+  List<Downloads> get searchIdleList;
+  @override
+  bool get isLoading;
   @override
   bool get isError;
   @override
