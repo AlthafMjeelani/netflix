@@ -166,6 +166,7 @@ abstract class GetHomeScreenData implements HomeEvent {
 
 /// @nodoc
 mixin _$HomeState {
+  String get stateId => throw _privateConstructorUsedError;
   List<HotAndNewData> get pastYearMovieList =>
       throw _privateConstructorUsedError;
   List<HotAndNewData> get trendingMovieList =>
@@ -176,7 +177,7 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   List<HotAndNewData> get trendingTvList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get hassError => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -188,13 +189,14 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res>;
   $Res call(
-      {List<HotAndNewData> pastYearMovieList,
+      {String stateId,
+      List<HotAndNewData> pastYearMovieList,
       List<HotAndNewData> trendingMovieList,
       List<HotAndNewData> tensDramasMovieList,
       List<HotAndNewData> southIndianMovieList,
       List<HotAndNewData> trendingTvList,
       bool isLoading,
-      bool hassError});
+      bool hasError});
 }
 
 /// @nodoc
@@ -207,15 +209,20 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? stateId = freezed,
     Object? pastYearMovieList = freezed,
     Object? trendingMovieList = freezed,
     Object? tensDramasMovieList = freezed,
     Object? southIndianMovieList = freezed,
     Object? trendingTvList = freezed,
     Object? isLoading = freezed,
-    Object? hassError = freezed,
+    Object? hasError = freezed,
   }) {
     return _then(_value.copyWith(
+      stateId: stateId == freezed
+          ? _value.stateId
+          : stateId // ignore: cast_nullable_to_non_nullable
+              as String,
       pastYearMovieList: pastYearMovieList == freezed
           ? _value.pastYearMovieList
           : pastYearMovieList // ignore: cast_nullable_to_non_nullable
@@ -240,9 +247,9 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hassError: hassError == freezed
-          ? _value.hassError
-          : hassError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -255,13 +262,14 @@ abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<HotAndNewData> pastYearMovieList,
+      {String stateId,
+      List<HotAndNewData> pastYearMovieList,
       List<HotAndNewData> trendingMovieList,
       List<HotAndNewData> tensDramasMovieList,
       List<HotAndNewData> southIndianMovieList,
       List<HotAndNewData> trendingTvList,
       bool isLoading,
-      bool hassError});
+      bool hasError});
 }
 
 /// @nodoc
@@ -275,15 +283,20 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? stateId = freezed,
     Object? pastYearMovieList = freezed,
     Object? trendingMovieList = freezed,
     Object? tensDramasMovieList = freezed,
     Object? southIndianMovieList = freezed,
     Object? trendingTvList = freezed,
     Object? isLoading = freezed,
-    Object? hassError = freezed,
+    Object? hasError = freezed,
   }) {
     return _then(_$_Initial(
+      stateId: stateId == freezed
+          ? _value.stateId
+          : stateId // ignore: cast_nullable_to_non_nullable
+              as String,
       pastYearMovieList: pastYearMovieList == freezed
           ? _value._pastYearMovieList
           : pastYearMovieList // ignore: cast_nullable_to_non_nullable
@@ -308,9 +321,9 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hassError: hassError == freezed
-          ? _value.hassError
-          : hassError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -320,19 +333,22 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
 class _$_Initial implements _Initial {
   const _$_Initial(
-      {required final List<HotAndNewData> pastYearMovieList,
+      {required this.stateId,
+      required final List<HotAndNewData> pastYearMovieList,
       required final List<HotAndNewData> trendingMovieList,
       required final List<HotAndNewData> tensDramasMovieList,
       required final List<HotAndNewData> southIndianMovieList,
       required final List<HotAndNewData> trendingTvList,
       required this.isLoading,
-      required this.hassError})
+      required this.hasError})
       : _pastYearMovieList = pastYearMovieList,
         _trendingMovieList = trendingMovieList,
         _tensDramasMovieList = tensDramasMovieList,
         _southIndianMovieList = southIndianMovieList,
         _trendingTvList = trendingTvList;
 
+  @override
+  final String stateId;
   final List<HotAndNewData> _pastYearMovieList;
   @override
   List<HotAndNewData> get pastYearMovieList {
@@ -371,11 +387,11 @@ class _$_Initial implements _Initial {
   @override
   final bool isLoading;
   @override
-  final bool hassError;
+  final bool hasError;
 
   @override
   String toString() {
-    return 'HomeState(pastYearMovieList: $pastYearMovieList, trendingMovieList: $trendingMovieList, tensDramasMovieList: $tensDramasMovieList, southIndianMovieList: $southIndianMovieList, trendingTvList: $trendingTvList, isLoading: $isLoading, hassError: $hassError)';
+    return 'HomeState(stateId: $stateId, pastYearMovieList: $pastYearMovieList, trendingMovieList: $trendingMovieList, tensDramasMovieList: $tensDramasMovieList, southIndianMovieList: $southIndianMovieList, trendingTvList: $trendingTvList, isLoading: $isLoading, hasError: $hasError)';
   }
 
   @override
@@ -383,6 +399,7 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
+            const DeepCollectionEquality().equals(other.stateId, stateId) &&
             const DeepCollectionEquality()
                 .equals(other._pastYearMovieList, _pastYearMovieList) &&
             const DeepCollectionEquality()
@@ -394,19 +411,20 @@ class _$_Initial implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._trendingTvList, _trendingTvList) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.hassError, hassError));
+            const DeepCollectionEquality().equals(other.hasError, hasError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(stateId),
       const DeepCollectionEquality().hash(_pastYearMovieList),
       const DeepCollectionEquality().hash(_trendingMovieList),
       const DeepCollectionEquality().hash(_tensDramasMovieList),
       const DeepCollectionEquality().hash(_southIndianMovieList),
       const DeepCollectionEquality().hash(_trendingTvList),
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(hassError));
+      const DeepCollectionEquality().hash(hasError));
 
   @JsonKey(ignore: true)
   @override
@@ -416,14 +434,17 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements HomeState {
   const factory _Initial(
-      {required final List<HotAndNewData> pastYearMovieList,
+      {required final String stateId,
+      required final List<HotAndNewData> pastYearMovieList,
       required final List<HotAndNewData> trendingMovieList,
       required final List<HotAndNewData> tensDramasMovieList,
       required final List<HotAndNewData> southIndianMovieList,
       required final List<HotAndNewData> trendingTvList,
       required final bool isLoading,
-      required final bool hassError}) = _$_Initial;
+      required final bool hasError}) = _$_Initial;
 
+  @override
+  String get stateId;
   @override
   List<HotAndNewData> get pastYearMovieList;
   @override
@@ -437,7 +458,7 @@ abstract class _Initial implements HomeState {
   @override
   bool get isLoading;
   @override
-  bool get hassError;
+  bool get hasError;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

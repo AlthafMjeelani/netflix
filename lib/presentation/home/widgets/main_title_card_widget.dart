@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:netflixapp/core/costents.dart';
 import 'package:netflixapp/presentation/widget/main_card.dart';
@@ -7,11 +9,11 @@ class MainTitleCardWidget extends StatelessWidget {
   const MainTitleCardWidget({
     Key? key,
     required this.title,
-    required this.url,
+    required this.posterList,
   }) : super(key: key);
 
   final String title;
-  final String url;
+  final List<String> posterList;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,10 @@ class MainTitleCardWidget extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return MainCardWidget(
                 width: 150,
-                listImageUrl: url,
+                listImageUrl: posterList[index],
               );
             },
-            itemCount: 10,
+            itemCount: posterList.length,
             separatorBuilder: (BuildContext context, int index) {
               return kwidth;
             },

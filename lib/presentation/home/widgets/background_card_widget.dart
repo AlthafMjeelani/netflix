@@ -7,7 +7,9 @@ import '../../../core/colors/colors.dart';
 class BackgroundcardWidget extends StatelessWidget {
   const BackgroundcardWidget({
     Key? key,
+    required this.backGroundImage,
   }) : super(key: key);
+  final List<String> backGroundImage;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class BackgroundcardWidget extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(homepageImage[5]),
+              image: NetworkImage(backGroundImage[0]),
               fit: BoxFit.fill,
             ),
           ),

@@ -7,7 +7,10 @@ import '../../../core/costents.dart';
 class NumberWidget extends StatelessWidget {
   const NumberWidget({
     Key? key,
+    required this.postersList,
   }) : super(key: key);
+
+  final List<String> postersList;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +30,11 @@ class NumberWidget extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return NumberCardWidget(
                 width: 150,
-                listImageUrl: homepageImage[4],
+                listImageUrl: postersList[index],
                 index: index,
               );
             },
-            itemCount: 10,
+            itemCount: postersList.length,
             separatorBuilder: (BuildContext context, int index) {
               return kwidth;
             },
